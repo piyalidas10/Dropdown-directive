@@ -53,6 +53,8 @@ export class DropdownDirective implements AfterViewInit, OnChanges {
         event.preventDefault();
       } else if (event.keyCode === 40 || event.which === 40) { // DOWN key from keyboard
         if (this.ulSelectList.classList.contains('open')) {
+          console.log('------------------------------', this.currentFocusableIndex, this.focusableLists.length - 1);
+          console.log(this.focusableLists);
           if (this.currentFocusableIndex < this.focusableLists.length - 1) {
             this.nextFocusableElement();
           }
@@ -113,7 +115,6 @@ export class DropdownDirective implements AfterViewInit, OnChanges {
 
   setFocusableElement(selectedOptionText: HTMLElement) {
     Array.from(this.focusableLists).forEach((element: any, index) => {
-      console.log('PIYALI => ', selectedOptionText, element);
       if (selectedOptionText.innerText === element['innerText']) {
         this.focusableLists[index].focus();
         this.currentFocusableIndex = index;
