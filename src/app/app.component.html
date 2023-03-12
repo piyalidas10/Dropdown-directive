@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="col-12 col-lg-4 offset-lg-5 col-md-4 offset-md-4 col-sm-6 offset-sm-3">
+    <div class="select-box" appDropdown [chooseOption] = "chooseOptName" (selectedOptionChange)="fetchSelectedValue($event)">
+      <div class="select-box__value">
+        <input class="select-box__input" type="radio" value="{{countrydata[0].abbreviation}}" name="{{countrydata[0].abbreviation}}"
+          checked="checked">
+        <p class="select-box__input-text">{{countrydata[0].name}}</p>
+        <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true">
+      </div>
+      <ul class="select-box__list">
+        <li *ngFor="let opt of countrydata; let i = index" tabIndex="{{i}}">
+          <label class="select-box__option" (click)="setChooseOption(opt)">{{opt.name}}</label>
+        </li>
+      </ul>
+    </div>
+    <h4 *ngIf="chooseOptName !== undefined">You have selected {{chooseOptName}}</h4>
+  </div>
+</div>
